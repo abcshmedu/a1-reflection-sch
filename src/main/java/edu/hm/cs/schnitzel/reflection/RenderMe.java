@@ -11,6 +11,6 @@ package edu.hm.cs.schnitzel.reflection;
  */
 public @interface RenderMe {
 
-    public String with() default "";
+    public String with() default "edu.hm.cs.schnitzel.reflection.Renderer";
     
 }

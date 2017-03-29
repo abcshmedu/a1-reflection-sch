@@ -9,7 +9,7 @@ import java.util.Date;
 public class ExampleClass {
 
     @RenderMe private final int foo;
-    @RenderMe(with = "edu.hm.renderer.ArrayRenderer")int[] array = {1, 2, 3,};
+    @RenderMe(with = "edu.hm.renderer.ArrayRenderer") int[] array = {1, 2, 3,};
     @RenderMe private final Date date = new Date(123456789);
 
     public ExampleClass(int foo) {
