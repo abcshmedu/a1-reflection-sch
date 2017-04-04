@@ -1,9 +1,8 @@
 package edu.hm.cs.schnitzel.reflection;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class Renderer {
 
@@ -28,13 +27,15 @@ public class Renderer {
                     Class<?> renderClass = Class.forName(path); 
                     if(renderClass != this.getClass()) {
                         
-                        renderClass.getConstructor(getObject());
+                        Object object = renderClass.getConstructor(Object.class).newInstance(getObject());
+                        Method method = renderClass.getMethod("render");
+                        method.invoke(object);
                         
                     } else {
                         //else just render the object
                         
                     }
-                } catch (ClassNotFoundException ex) {
+                } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
                     System.out.println("ERRRRor");
                 }
             }
