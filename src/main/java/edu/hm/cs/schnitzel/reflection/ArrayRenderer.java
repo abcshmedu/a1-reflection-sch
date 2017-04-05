@@ -6,21 +6,12 @@ package edu.hm.cs.schnitzel.reflection;
  */
 public class ArrayRenderer {
 
-    private final Object object;
-
-    public ArrayRenderer(Object object) {
-        this.object = object;
+    public String render(int[] ints) {
+    	String result = "[";
+    	for (final int i : ints) {
+    		result += (i + ", ");
+    	}
+    	result += "]";
+    	return result;
     }
-
-    public String render() {
-
-        getObject(); // TODO: do sth with this object
-        // suche alle methoden mit annotation RenderMe
-        return "";
-    }
-
-    private Object getObject() {
-        return object;
-    }
-
 }
