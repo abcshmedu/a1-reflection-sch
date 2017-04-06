@@ -16,12 +16,13 @@ public class RendererTest {
 	@Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {     
-                 {"Instance of edu.hm.cs.schnitzel.reflection.ExampleClass:\nfoo (Type int): 5\narray (Type int[]): [1, 2, 3, ]\ndate (Type java.util.Date): Fri Jan 02 11:17:36 CET 1970\n", new ExampleClass(5) }, 
-                 {"Instance of edu.hm.cs.schnitzel.reflection.ExampleClass:\nfoo (Type int): 4\narray (Type int[]): [1, 2, 3, ]\ndate (Type java.util.Date): Fri Jan 02 11:17:36 CET 1970\n", new ExampleClass(4) }, 
-                 {"Instance of edu.hm.cs.schnitzel.reflection.ExampleClass:\nfoo (Type int): 3\narray (Type int[]): [1, 2, 3, ]\ndate (Type java.util.Date): Fri Jan 02 11:17:36 CET 1970\n", new ExampleClass(3) }, 
-                 {"Instance of edu.hm.cs.schnitzel.reflection.ExampleClass:\nfoo (Type int): 2\narray (Type int[]): [1, 2, 3, ]\ndate (Type java.util.Date): Fri Jan 02 11:17:36 CET 1970\n", new ExampleClass(2) }, 
-                 {"Instance of edu.hm.cs.schnitzel.reflection.ExampleClass:\nfoo (Type int): 1\narray (Type int[]): [1, 2, 3, ]\ndate (Type java.util.Date): Fri Jan 02 11:17:36 CET 1970\n", new ExampleClass(1) }, 
-                 {"Instance of edu.hm.cs.schnitzel.reflection.ExampleClass:\nfoo (Type int): 0\narray (Type int[]): [1, 2, 3, ]\ndate (Type java.util.Date): Fri Jan 02 11:17:36 CET 1970\n", new ExampleClass(0) }
+                 {"Instance of edu.hm.cs.schnitzel.reflection.ExampleClass:\nfoo (Type int): 5\narray (Type int[]): [1, 2, 3, ]\ndate (Type java.util.Date): Fri Jan 02 11:17:36 CET 1970\nexampleMethod2 (Type int): 2\nexampleMethod3 (Type int[]): [1, 2, 3, ]\n", new ExampleClass(5) }, 
+                 {"Instance of edu.hm.cs.schnitzel.reflection.ExampleClass:\nfoo (Type int): 4\narray (Type int[]): [1, 2, 3, ]\ndate (Type java.util.Date): Fri Jan 02 11:17:36 CET 1970\nexampleMethod2 (Type int): 2\nexampleMethod3 (Type int[]): [1, 2, 3, ]\n", new ExampleClass(4) }, 
+                 {"Instance of edu.hm.cs.schnitzel.reflection.ExampleClass:\nfoo (Type int): 3\narray (Type int[]): [1, 2, 3, ]\ndate (Type java.util.Date): Fri Jan 02 11:17:36 CET 1970\nexampleMethod2 (Type int): 2\nexampleMethod3 (Type int[]): [1, 2, 3, ]\n", new ExampleClass(3) }, 
+                 {"Instance of edu.hm.cs.schnitzel.reflection.ExampleClass:\nfoo (Type int): 2\narray (Type int[]): [1, 2, 3, ]\ndate (Type java.util.Date): Fri Jan 02 11:17:36 CET 1970\nexampleMethod2 (Type int): 2\nexampleMethod3 (Type int[]): [1, 2, 3, ]\n", new ExampleClass(2) }, 
+                 {"Instance of edu.hm.cs.schnitzel.reflection.ExampleClass:\nfoo (Type int): 1\narray (Type int[]): [1, 2, 3, ]\ndate (Type java.util.Date): Fri Jan 02 11:17:36 CET 1970\nexampleMethod2 (Type int): 2\nexampleMethod3 (Type int[]): [1, 2, 3, ]\n", new ExampleClass(1) }, 
+                 {"Instance of edu.hm.cs.schnitzel.reflection.ExampleClass:\nfoo (Type int): 0\narray (Type int[]): [1, 2, 3, ]\ndate (Type java.util.Date): Fri Jan 02 11:17:36 CET 1970\nexampleMethod2 (Type int): 2\nexampleMethod3 (Type int[]): [1, 2, 3, ]\n", new ExampleClass(0) },
+                 {"Instance of edu.hm.cs.schnitzel.reflection.ExampleClass:\nfoo (Type int): 0\narray (Type int[]): [1, 2, 3, ]\ndate (Type java.util.Date): Fri Jan 02 11:17:36 CET 1970\nexampleMethod2 (Type int): 2\nexampleMethod3 (Type int[]): [1, 2, 3, ]\n", new ExampleClass(0) }
            });
     }
 	
@@ -36,7 +37,6 @@ public class RendererTest {
     @Test
     public void testRendering() throws Exception {
         assertEquals(expected, renderer.render());
-    }
-    
+    }    
     
 }
