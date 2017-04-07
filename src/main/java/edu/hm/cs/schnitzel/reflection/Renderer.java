@@ -4,18 +4,34 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+/**
+ * A class for rendering Methods or Variables using the Annotation @RenderMe.
+ *
+ * @author nicfel
+ */
 public class Renderer {
 
     private final Object object;
 
-    public Renderer(Object object) {
-        this.object = object;
+    /**
+     * A standard constructor which accepts and Object that should be searched
+     * for @RenderMe annotations.
+     *
+     * @param toRender The object to be searched for @RenderMe.
+     */
+    public Renderer(final Object toRender) {
+        this.object = toRender;
     }
 
-    public String render() {
+    /**
+     * This will render the variables/methods of the object.
+     *
+     * @return A String containing the rendered variables/methods.
+     */
+    public final String render() {
         String result = "";
 
-        final Class<?> toRender = getObject().getClass();
+        final Class< ?> toRender = getObject().getClass();
         //get all the fields
         final Field[] fields = toRender.getDeclaredFields();
         //get all the methods
@@ -30,22 +46,34 @@ public class Renderer {
                 try {
                     //if annotation has param -> call param rendererer method
                     final String path = renderMe.with();
-                    final Class<?> renderClass = Class.forName(path);
+                    final Class< ? > renderClass = Class.forName(path);
                     if (renderClass != this.getClass()) {
 
                         // create a new object instance of the given renderer
-                        final Object obj = renderClass.getConstructor().newInstance();
+                        final Object obj = renderClass
+                                .getConstructor().newInstance();
                         // get the method render()
-                        final Method method = renderClass.getMethod("render", field.getType());
+                        final Method method = renderClass
+                                .getMethod("render", field.getType());
                         // invoke the method with the previously created object
-                        result += (field.getName() + " (Type " + field.getType().getSimpleName() + "): " + (String) method.invoke(obj, field.get(getObject())) + "\n");
+                        result += (field.getName() + " (Type "
+                                + field.getType().getSimpleName() + "): "
+                                + (String) method.invoke(obj,
+                                        field.get(getObject())) + "\n");
 
                     } else {
                         //else just render the field
-                        result += (field.getName() + " (Type " + field.getType().getName() + "): " + field.get(getObject()).toString() + "\n");
+                        result += (field.getName()
+                                + " (Type " + field.getType().getName()
+                                + "): "
+                                + field.get(getObject()).toString() + "\n");
 
                     }
-                } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+                } catch (ClassNotFoundException
+                        | NoSuchMethodException| SecurityException
+                        | InstantiationException | IllegalAccessException 
+                        | IllegalArgumentException 
+                        | InvocationTargetException ex) {
                     System.out.println(ex.toString());
                 }
             }
