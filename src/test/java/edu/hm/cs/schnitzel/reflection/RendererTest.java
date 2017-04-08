@@ -21,6 +21,9 @@ public class RendererTest {
 
     /**
      * The parameters for test method testRendering.
+     * The tests might fail, because the getDeclaredMethods()-Method returns methods
+     * in a random order. In this case, please execute the tests again.
+     * See Java documentation: http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getDeclaredMethods--
      *
      * @return The parameters as an ArrayList.
      */
